@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <title>IOT-CLIENT</title>
+    <style>
+        html, body {
+            height: 100%;
+            background-color: #f6f6f6;
+        }
+    </style>
+</head>
+    <body>
+    <center>
+        <h1>CLIENT He thong diem danh</h1>
+    </center>
+
+    <div class="container-fluid" style="min-height:95%">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-sm-6">
+                    {% comment %} {% block video %}{% endblock %} {% endcomment %}
+                <img src="{% url 'video-feed' %}" alt="">
+            </div>
+            <div class="col-sm-3">
+                <div class="bs-slidebar">
+                    <div class="card" style="height: 30rem">
+                        <div class="card-body">
+                            <p class="card-title">Class: KSTN-CNTT-K63</p>
+                            <div id ='liststudent'>
+                                <ul class="list-group">
+                                    {% for student in ListStudent %}
+                                    <li class="list-group-item">
+                                        {% if student.status == 0 %}
+                                            <input class="form-check-input me-1" type="checkbox" id ={{student.id}} disabled >
+                                        {% else %}
+                                            <input class="form-check-input me-1" type="checkbox" id ={{student.id}} checked disabled >
+                                        {% endif %}
+                                        {{student.name}} {{student.mssv}}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-sm-6">
+                <div class="card" style="width: 40rem;">
+                    <div class="card-body">
+                       <div id="student">Student </div>
+                    </div>
+                </div>
+                <br>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-outline-primary" type="submit">Start</button>
+                    <button class="btn btn-outline-primary" type="submit">Stop</button>
+
+                    <form method="GET" id="capture">
+                        {% csrf_token %}
+                        <button class="btn btn-outline-primary" type="submit">Capture</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="d-grid gap-4">
+                    <button class="btn btn-primary" type="button">Send</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container-fluid">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>  
+    <script src="https://code.jquery.com/jquery-3.5.1.js" 
+          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+            crossorigin="anonymous"></script>
+  
+    <script type="text/javascript">
+    $(document).on('submit','#capture',function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'GET',
+            dataType:'json',
+            url:'{% url "capture" %}',
+            success: function(result){
+                $("#student").html(result.capture);
+            }
+            })
+        })
+    </script>  
+
+</body>
+</html>

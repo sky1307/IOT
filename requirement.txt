@@ -1,0 +1,9 @@
+Django
+Flask
+itsdangerous
+Jinja2
+MarkupSafe
+numpy
+opencv
+pytz
+Werkzeug

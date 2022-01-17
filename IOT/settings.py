@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-h5a9s3q3513d*izgrdbtl99d8^!bquzi1syik38afuk7)2$kx+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','iot-client-dj.eba-svs2cu2v.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['localhost','iot-client-env.eba-q9ibvnin.us-east-1.elasticbeanstalk.com']
 
 
 # Application definition

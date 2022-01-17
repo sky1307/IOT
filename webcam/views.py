@@ -18,9 +18,9 @@ def stream():
             message = None
         if message is not None:
             _image = message.get("Image")
-            _image.save('media/cam3.png', format="PNG")
+            # _image.save('media/cam3.png', format="PNG")
             yield (b'--frame\r\n'
-                b'Content-Type: image/jpeg\r\n\r\n' + open('media/cam3.png', 'rb').read() + b'\r\n')
+                b'Content-Type: image/jpeg\r\n\r\n' + _image + b'\r\n')
 
 def video_feed(request):
     return StreamingHttpResponse(stream(), content_type='multipart/x-mixed-replace; boundary=frame')
@@ -98,6 +98,6 @@ class App:
     def byte_image_to_png(self, message):
         print(self.u)
         self.u+=1
-        bytes_image = io.BytesIO(message.payload)
-        picture = Image.open(bytes_image)
-        return picture
+        # bytes_image = io.BytesIO(message.payload)
+        # picture = Image.open(bytes_image)
+        return message.payload

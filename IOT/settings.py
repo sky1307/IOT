@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-h5a9s3q3513d*izgrdbtl99d8^!bquzi1syik38afuk7)2$kx+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','iot-client-dj.eba-svs2cu2v.us-west-2.elasticbeanstalk.com']
 
 
 # Application definition
@@ -119,16 +119,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static'),
-]
+STATIC_ROOT = 'static'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = [
-    os.path.join(BASE_DIR,'media'),
-]
-
-
+STATIC_ROOT = 'media'
+CERTIFICATES_URL = '/certificates/'
+CERTIFICATES_ROOT = 'certificates'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

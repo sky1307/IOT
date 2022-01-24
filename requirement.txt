@@ -9,3 +9,7 @@ pytz
 Werkzeug
 AWSIoTPythonSDK
 Pillow
+cmake
+dlib
+face_recognition
+imutils

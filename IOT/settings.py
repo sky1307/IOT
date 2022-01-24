@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-h5a9s3q3513d*izgrdbtl99d8^!bquzi1syik38afuk7)2$kx+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','iot-client-env.eba-q9ibvnin.us-east-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['localhost','iot-client-env2.eba-agpfir2p.us-east-1.elasticbeanstalk.com','.ngrok.io']
 
 
 # Application definition
@@ -122,10 +122,20 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 
 MEDIA_URL = '/media/'
-STATIC_ROOT = 'media'
+MEDIA_ROOT = 'media'
 CERTIFICATES_URL = '/certificates/'
 CERTIFICATES_ROOT = 'certificates'
+
+PICKEL_URL = '/pickel_file/'
+PICKEL_ROOT= 'pickel_file'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Celery Configuration Options
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_BACKEND_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'

@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from django.http import StreamingHttpResponse
-from django.views.generic import ListView
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect
-from .videobase import VideoDemo, VideoApp, VideoBase
+from .videobase import VideoDemo, VideoApp, VideoBase, WebCam
 
 
 pk = -1
@@ -18,8 +17,12 @@ def Init(request):
         print("pk = ",pk)
         if pk == '0':
             cap = VideoDemo()
-        else:
+        elif pk == '1':
             cap = VideoApp()
+        elif pk == '2':
+            cap = WebCam()
+        else:
+            pass
         return JsonResponse({"result":pk})
 
 @csrf_protect

@@ -178,6 +178,11 @@
                                         {% else %}
                                             <option value="1">Lớp KSTN CNTT K63      </option>
                                         {% endif %}
+                                        {% if pk == '2' %}
+                                            <option value="2" selected="selected">Webcam                 </option>
+                                        {% else %}
+                                            <option value="2">Webcam                 </option>
+                                        {% endif %}
                                        
                                         
                                         
@@ -262,7 +267,7 @@
             dataType:'json',
             url:'{% url "connect" %}',
             success: function(result){
-                alert(result.result)
+                {% comment %} alert(result.result) {% endcomment %}
                 location.reload(true); 
             }
             })
@@ -274,7 +279,7 @@
             dataType:'json',
             url:'{% url "disconnect" %}',
             success: function(result){
-               alert(result.result)
+               {% comment %} alert(result.result) {% endcomment %}
                location.reload(true); 
             }
             })
@@ -289,7 +294,7 @@
                 pk:$('#myselect').val()
             },
             success: function(result){
-               alert("Choose Camera "+result.result)
+               {% comment %} alert("Choose Camera "+result.result) {% endcomment %}
                location.reload(true); 
             }
             })

@@ -7,7 +7,7 @@ import time
 
 def face_recognition_ai(path_image):
     print("[INFO] loading encodings...")
-    data = pickle.loads(open('pickel_file/encodings_hog.pickle', 'rb').read())
+    data = pickle.loads(open('pickel_file/encodings_cnn.pickle', 'rb').read())
     # load the input image and convert it from BGR to RGB
     image = cv2.imread(path_image)
     rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -18,7 +18,7 @@ def face_recognition_ai(path_image):
     print("[INFO] recognizing faces...")
     ctime = time.time()
     boxes = face_recognition.face_locations(rgb, 
-        model= 'hog')
+        model= 'cnn')
     print(time.time()-ctime)
     ctime = time.time()
     encodings = face_recognition.face_encodings(rgb, boxes)

@@ -19,6 +19,6 @@ if __name__=="__main__":
 			client.publish("esp32/cam_1", message, qos=2)
 			time.sleep(0.05)
 			count += 1
-			print("Image pushed at {} frame/s".format(count/(time.time()-ctime)))
+			print("Image pushed at {} frames/s".format(count/(time.time()-ctime)))
 	time.sleep(4) # wait
 	client.loop_stop() #stop the loop

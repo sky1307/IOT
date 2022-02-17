@@ -3,6 +3,7 @@ from django.http import StreamingHttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect
 from .videobase import VideoDemo, VideoApp, VideoBase, WebCam
+from .configs import *
 
 
 pk = -1
@@ -14,13 +15,17 @@ def Init(request):
     global cap
     if request.method == 'GET':
         pk = request.GET.get('pk')
-        print("pk = ",pk)
-        if pk == '0':
-            cap = VideoDemo()
-        elif pk == '1':
-            cap = VideoApp()
-        elif pk == '2':
-            cap = WebCam()
+        #print("pk = ",pk)
+        #if pk == '0':
+        #    cap = VideoDemo()
+        #elif pk == '1':
+        #    cap = VideoApp()
+        #if pk == '2':
+        #    cap = WebCam()
+        #else:
+        #    pass
+        if pk in topic_dict:
+            cap = VideoApp(topic_dict[pk])
         else:
             pass
         return JsonResponse({"result":pk})

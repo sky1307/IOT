@@ -82,8 +82,9 @@ class VideoDemo(VideoBase):
 
     
 class VideoApp(VideoBase):
-    def __init__(self):
+    def __init__(self, topic):
         super().__init__() 
+        self.topic = topic
         self.Class = "1"
         self.img_received = False
         self.client = None
@@ -125,7 +126,7 @@ class VideoApp(VideoBase):
                 else:
                     try:
                         if self.img_received:
-                            print("Image received")
+                            #print("Image received")
                             self.img_received = False
 
                             yield (b'--frame\r\n'
@@ -153,7 +154,7 @@ class VideoApp(VideoBase):
             return ['Waiting 2 second. . . .'], [] 
         
     def on_connect(self, client, userdata, flags, rc):
-        client.subscribe("esp32/cam_0")
+        client.subscribe(self.topic)
 
     def on_message(self, client, userdata, message):
         #print("message topic=",message.topic)

@@ -19,11 +19,7 @@ def face_recognition_ai(path_image):
     ctime = time.time()
     boxes = face_recognition.face_locations(rgb, 
         model= 'hog')
-    print(time.time()-ctime)
-    ctime = time.time()
     encodings = face_recognition.face_encodings(rgb, boxes)
-    print(time.time()-ctime)
-    ctime = time.time()
     # initialize the list of names for each face detected
     names = []
 
@@ -32,7 +28,7 @@ def face_recognition_ai(path_image):
         # attempt to match each face in the input image to our known
         # encodings
         matches = face_recognition.compare_faces(data["encodings"],
-            encoding)
+            encoding, tolerance=0.3)
         name = "Unknown"
 
         # check to see if we have found a match
@@ -54,7 +50,7 @@ def face_recognition_ai(path_image):
         
         # update the list of names
         names.append(name)
-    print(names)
+    print("Name: {}".format(names))
     # loop over the recognized faces
     for ((top, right, bottom, left), name) in zip(boxes, names):
         # draw the predicted face name on the image
@@ -64,7 +60,7 @@ def face_recognition_ai(path_image):
             0.75, (0, 255, 0), 2)
     # show the output image
     cv2.imwrite('media/output.jpg', image)
-    print(time.time()-ctime)
+    print("Computational time: {}".format(time.time()-ctime))
     #cv2.imshow("Image", image)
     # cv2.waitKey(0)
     return names, boxes

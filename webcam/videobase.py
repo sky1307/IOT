@@ -93,6 +93,7 @@ class VideoApp(VideoBase):
         self.showbox = False
         self.current = 0
         self.c_capture = True
+        self.images = 0
     
     def connect(self):
         self.con = True
@@ -115,6 +116,7 @@ class VideoApp(VideoBase):
             yield (b'--frame\r\n'
                 b'Content-Type: image/jpeg\r\n\r\n' + open(file_name, 'rb').read() + b'\r\n')  
         else:
+            ctime = time.time()
             while True:
                 if self.showbox == True:
                     yield (b'--frame\r\n'
@@ -127,6 +129,8 @@ class VideoApp(VideoBase):
                     try:
                         if self.img_received:
                             #print("Image received")
+                            self.images += 1
+                            print("Image recrived at {} frames/s".format(self.images/(time.time()-ctime)))
                             self.img_received = False
 
                             yield (b'--frame\r\n'

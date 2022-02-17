@@ -10,8 +10,8 @@ if __name__=="__main__":
 	client.loop_start() #start the loop
 	root = "demo_image/data"
 	count = 0
+	ctime = time.time()
 	while True:
-		ctime = time.time()
 		for i in range(229):
 			path = "demo_image/data/frame{}.jpg".format(i)
 			with open(path, "rb") as image:

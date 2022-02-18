@@ -1,12 +1,12 @@
 import queue
 import time
 from .tasks import face_ai
-from .models import Student
+from .models import Student, Class, Authentication
 import paho.mqtt.client as mqtt
 import time
 import base64
 import cv2
-
+from datetime import date
 
 class VideoBase():
     def __init__(self):
@@ -27,7 +27,7 @@ class VideoBase():
         return True
 
     def capture(self):
-        self.test_DB()
+        # self.test_DB()
         return "Viet Pham", [1,2,3,4]
 
     def stream(self):
@@ -39,12 +39,40 @@ class VideoBase():
         print(message)
 
     def listStudent(self, pk):
-        return Student.objects.filter(Class=pk)
+        if Class.objects.filter(value=pk).exists():
+            c = Class.objects.get(value=pk)
+            l = []
+            if Authentication.objects.filter(date = date.today()).exists():
+                print('today:', date.today())
+            Auth = Authentication.objects.filter(date = date.today())
+            for student in Student.objects.filter(Class=c):
+                for aut in Auth:
+                    print(student.id, aut.student_id)
+                    if str(student.id) == str(aut.student_id):
+                        print("true")
+                        student.status = aut.status
+                l.append(student)
+            return l
+    
+        
 
-    def updateStudent(self,name, status):
-        student = Student.objects.get(name=name, Class=self.Class)
-        student.status = status 
-        student.save()
+
+
+    def updateAuthentication(self,mssv):
+        if Student.objects.filter(mssv=mssv).exists():
+
+            # If 'mssv' exists, then matched and get
+            student = Student.objects.get(mssv=mssv)
+
+            # Then save the 'username' into Authentication table into database
+            Authentication.objects.get_or_create(
+                student_id=student,
+                status=True,
+                date = date.today()
+            )
+            return True
+        return False
+        
     def test_DB(self):
         students = Student.objects.filter(Class=self.Class)
         print(self.Class)
@@ -75,7 +103,8 @@ class VideoDemo(VideoBase):
     def capture(self):
         name, box= face_ai('media/demo.jpg') 
         self.note("get get get")
-        self.test_DB()
+        
+        # self.test_DB()
         # if name != 'Unknown':
         #     # self.updateStudent(name, 1)
         return name, box
@@ -141,7 +170,7 @@ class VideoApp(VideoBase):
             self.c_capture = False
             name, box= face_ai(self.file_name) 
             self.note("get get get")
-            self.test_DB()
+            self.updateAuthentication(name)
             if len(name)!=0:
                 self.showbox = True
                 self.current = time.time()
@@ -211,7 +240,7 @@ class WebCam(VideoBase):
             self.c_capture = False
             name, box= face_ai(self.file_name) 
             self.note("get get get")
-            self.test_DB()
+            self.updateAuthentication("20183651")
             if len(name)!=0:
                 self.showbox = True
                 self.current = time.time()

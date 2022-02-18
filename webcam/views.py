@@ -48,6 +48,8 @@ def capture(request):
     return JsonResponse({ "name":name})
 
 
+
+
 def home(request):
     return render(request, 'index.html', {'ListStudent': cap.listStudent(pk), 'update':'True', 'pk':pk})
 

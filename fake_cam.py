@@ -1,5 +1,4 @@
 import paho.mqtt.client as mqtt
-import os
 import base64
 import time
 

@@ -48,8 +48,8 @@ class VideoBase():
 			Auth = Authentication.objects.filter(date = date.today())
 			for student in Student.objects.filter(Class=c):
 				for aut in Auth:
-					print(student.id, aut.student_id)
-					if str(student.id) == str(aut.student_id):
+					print(student.name, aut.student)
+					if str(student.name) == str(aut.student):
 						print("true")
 						student.status = aut.status
 				l.append(student)
@@ -63,7 +63,7 @@ class VideoBase():
 
 			# Then save the 'username' into Authentication table into database
 			Authentication.objects.get_or_create(
-				student_id=student,
+				student=student,
 				status=True,
 				date = date.today()
 			)

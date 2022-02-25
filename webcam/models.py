@@ -17,11 +17,11 @@ class Student(models.Model):
     Class = models.ForeignKey(Class, on_delete = models.CASCADE)
     status = models.BooleanField(default=False)
     def __str__(self):
-        return str(self.id)
+        return str(self.name)
 
 class Authentication(models.Model):
     id = models.AutoField(primary_key=True)
-    student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
     date  = models.DateField(auto_now_add=True)
     status = models.BooleanField(default=False)
     def __str__(self):

@@ -13,8 +13,8 @@ class ClassInfo(admin.ModelAdmin):
     
 class AuthenticationInfo(admin.ModelAdmin):
     list_editable = ['status']
-    list_display = ['id', 'student_id','status','date']
-    search_fields = ['student_id','status','date']
+    list_display = ['id', 'student','status','date']
+    search_fields = ['student','status','date']
 
 admin.site.register(Student, StudenInfo)
 admin.site.register(Class, ClassInfo)

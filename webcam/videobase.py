@@ -171,7 +171,7 @@ class VideoApp(VideoBase):
 			self.c_capture = False
 			name, box= face_ai(self.file_name) 
 			self.note("get get get")
-			self.updateAuthentication(name)
+			self.updateAuthentication(name[0])
 			if len(name)!=0:
 				self.showbox = True
 				self.current = time.time()

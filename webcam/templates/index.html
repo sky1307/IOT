@@ -19,7 +19,7 @@
   cursor: pointer;
   padding: 0px 30px;
   display: inline-block;
-  margin: 15px 30px;
+  margin: 5px 5px;
   text-transform: uppercase;
   line-height: 46px;
   font-weight: 400;
@@ -286,7 +286,7 @@
                 <div class = "card mb-4">
                     <div class="card-header">Action</div>
                     <div class="card-body">
-                     
+                       
                             <form method="GET" id="start"> 
                             <button class="snip1457" type="submit">Start </button>
                             </form>
@@ -297,30 +297,14 @@
                                 {% csrf_token %}
                                 <button  class="snip1457" type="submit" >Capture</button>                            
                             </form>
-                        
+                       
 
                            
                     </div>
                         
                 </div>
 
-                {% comment %} <div class = "card mb-4">
-                    <div class="card-header">Action</div>
-                    <br>
-                    <div class="btn-group" role="group">
-                        <form method="GET" id="start">
-                            <button class="btn btn-outline-primary" type="submit">Start</button>
-                        </form>
-                        <form method="GET" id="stop">
-                            <button class="btn btn-outline-primary" type="submit">Stop</button>
-                        </form>
-                        <form method="GET" id="capture">
-                            {% csrf_token %}
-                            <button class="btn btn-outline-primary" type="submit">Capture</button>
-                        </form>
-                      
-                    </div>
-                </div> {% endcomment %}
+                
             </div>
         </div>
         

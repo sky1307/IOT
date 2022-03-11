@@ -10,14 +10,14 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/static/styles.css" rel="stylesheet" />
         <style>
-.snip1457 {
+        .snip1457 {
   font-family: 'Raleway', Arial, sans-serif;
   border: none;
   background-color: #5666a5;
   border-radius: 5px;
   color: #ffffff;
   cursor: pointer;
-  padding: 0px 30px;
+  padding: 0px 25px;
   display: inline-block;
   margin: 5px 5px;
   text-transform: uppercase;
@@ -29,7 +29,7 @@
   overflow: hidden;
   font-size: 16px;
   border-radius: 23px;
-  letter-spacing: 2px;
+  width:130px;
   
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
@@ -71,24 +71,6 @@
   -webkit-transform: translateY(0%);
   transform: translateY(0%);
   opacity: 0.25;
-}
-            .dropdown {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.06)) repeat scroll 0 0 #F2F2F2;
-    border-color: #FFFFFF #F7F7F7 #F5F5F5;
-    border-image: none;
-    border-radius: 3px;
-    border-style: solid;
-    border-width: 1px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
-    display: inline-block;
-    height: 38px;
-    overflow: hidden;
-    position: relative;
-    width: 380px;
 }
             .dropdown {
     -moz-border-bottom-colors: none;
@@ -209,8 +191,8 @@
     <header class="py-5 bg-light border-bottom mb-4">
         <div class="container">
             <div class="text-center my-5">
-                <h1 class="fw-bolder">He thong diem danh</h1>
-                <p class="lead mb-0">IoT va Ung dung - Nhom 1</p>
+                <h1 class="fw-bolder">Hệ thống điểm danh</h1>
+                <p class="lead mb-0">IoT và Ứng dụng - Nhóm 1</p>
             </div>
         </div>
     </header>    
@@ -258,6 +240,7 @@
                                         {% else %}
                                             <option value="1">Lớp KSTN CNTT K63      </option>
                                         {% endif %}
+ 
                                     </select>
                                     <button class="btn btn-outline-secondary" type="submit">Chọn</button>
                                 </div>
@@ -283,28 +266,20 @@
                         </div>
                     
                 </div>
-                <div class = "card mb-4">
-                    <div class="card-header">Action</div>
-                    <div class="card-body">
-                       
-                            <form method="GET" id="start"> 
-                            <button class="snip1457" type="submit">Start </button>
-                            </form>
-                            <form method="GET" id="stop">                          
-                                <button class="snip1457" type="submit">Stop</button>
-                            </form>
-                            <form method="GET" id="capture"> 
-                                {% csrf_token %}
-                                <button  class="snip1457" type="submit" >Capture</button>                            
-                            </form>
-                       
-
-                           
+                <div>
+                    <div class="btn-group" role="group">
+                        <form method="GET" id="start"> 
+                            <button class="snip1457" type="submit">Start</button>
+                        </form>
+                        <form method="GET" id="stop">                          
+                            <button class="snip1457" type="submit">Stop  </button>
+                        </form>
+                        <form method="GET" id="capture"> 
+                            {% csrf_token %}
+                            <button  class="snip1457" type="submit" >Capture</button>                            
+                        </form>
                     </div>
-                        
                 </div>
-
-                
             </div>
         </div>
         
@@ -313,8 +288,8 @@
     </div>
 
      <!-- Footer-->
-     <footer class="py-5 bg-dark">
-        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
+    <footer class="py-5 bg-dark">
+        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; KSTN-CNTT K63- Group 1</p></div>
     </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

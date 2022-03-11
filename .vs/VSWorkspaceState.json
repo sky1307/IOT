@@ -3,8 +3,14 @@
     "",
     "\\dataset",
     "\\demo_image",
-    "\\webcam"
+    "\\IOT",
+    "\\webcam",
+    "\\webcam\\migrations",
+    "\\webcam\\migrations\\__pycache__",
+    "\\webcam\\static",
+    "\\webcam\\templates",
+    "\\webcam\\__pycache__"
   ],
-  "SelectedNode": "\\webcam\\videobase.py",
+  "SelectedNode": "\\webcam\\urls.py",
   "PreviewInSolutionExplorer": false
 }
